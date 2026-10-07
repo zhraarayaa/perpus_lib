@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'author', 'description', 'year_published'];
+
+    protected $fillable = [
+        'title',
+        'author',
+        'publisher',
+        'description',
+        'year_published',
+        'isbn',
+        'category_id'
+    ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    /**
-     * Get the users that have borrowed the book.
-     */
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'loans')->withPivot('loan_date', 'return_date')
-            ->withTimestamps();
     }
 }

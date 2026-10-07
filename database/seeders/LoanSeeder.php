@@ -11,7 +11,7 @@ class LoanSeeder extends Seeder
     public function run(): void
     {
         $user = User::where('email', 'dimas@gamelab.id')->first();
-        $book = Book::where('title', 'Belajar Laravel 11')->first();
+        $book = Book::where('title', 'Laravel Up & Running')->first();
 
         if ($user && $book) {
             $user->books()->attach($book->id, ['loan_date' => now()]);
